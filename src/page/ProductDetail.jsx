@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Col, Container, Dropdown, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
+import { useEffect, useState } from 'react'
+import { Button, Col, Container, Dropdown, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 const ProductDetail = () => {
