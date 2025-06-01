@@ -1,0 +1,82 @@
+.login-button {
+  display : flex;
+  justify-content: flex-end;
+  margin : 20px;
+  gap : 10px;
+  align-items: center;
+  text-align : center;
+  cursor: pointer;
+}
+
+.wrapper {
+  margin-top : 20px;
+}
+
+.nav-section {
+  display : flex;
+  justify-content: center;
+}
+
+.menu-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.menu-list li {
+  padding : 10px;
+}
+
+.menu-section {
+  display: flex;
+  justify-content: center;
+  position : relative;
+}
+
+.search-section {
+  position : absolute;
+  right : 0;
+  top : 25%;
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items : center;
+  
+}
+
+.input-design {
+  border-width : 0 0 1px;
+  &:focus {outline : none;}
+}
+
+.product-card{
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom : 20px;
+}
+
+.product-card:hover {
+  transform: scale(1.1);
+}
+
+.product-img {
+  display : flex;
+  justify-content: flex-end;
+}
+
+.detail-page {
+  margin-top : 20px;
+}
+
+.product-detail {
+  width : 400px;
+  margin-top : 15px;
+  display: flex;
+  flex-direction: column;
+  gap : 15px;
+}
+
+.cart-add-btn{
+  width : 200px;
+}
