@@ -2,30 +2,34 @@ import { useEffect, useState } from 'react'
 import ProductCard from '../component/ProductCard';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
+// import { productAction }  from '../redux/actions/productAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../redux/reducers/productSlice';
 
 const ProductAll = () => {
 
-    const [productList, setProductList] = useState([]);
+    // const [productList, setProductList] = useState([]);
+    const productList = useSelector(state=>state.product.productList);
+    // console.log(productList);
     const [query, setQuery] = useSearchParams();
+    const dispatch = useDispatch();
 
-    const getProducts = async () => {
+    const getAllProducts = () => {
         let searchQuery = query.get('q') || "";
         // console.log("sq : ", searchQuery);
-        let url = ` https://my-json-server.typicode.com/chocozzangzzang/chocozzang-hnmpj/products?q=${searchQuery}`;
-        let response = await fetch(url);
-        let data = await response.json();
-        setProductList(data);
+        // dispatch(productAction.getProducts(searchQuery));
+        dispatch(getProducts(searchQuery));
     }
 
     useEffect(() => {
-        getProducts();
+        getAllProducts();
     }, [query]);
 
     return (
         <div className='wrapper'>
             <Container>
                 <Row>
-                    {productList.map((product) => (
+                    {productList?.map((product) => (
                         <Col lg={3} key={product.id}>
                             <ProductCard item={product}/>
                         </Col>

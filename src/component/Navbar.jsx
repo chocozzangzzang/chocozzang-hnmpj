@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/reducers/authSlice';
 
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = () => {
     const menuList = [
         '여성', 
         'Divided',
@@ -17,11 +19,14 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     ];
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const authenticate = useSelector(state=>state.auth.auth);
     const goToLoginPage = () => {
         navigate('/login');
     }
-    const logOut = () => {
-        setAuthenticate(false);
+    const logoutUser = () => {
+        // dispatch(authAction.logout());
+        dispatch(logout());
         navigate('/');
     }
 
@@ -43,7 +48,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                         <FontAwesomeIcon icon={faUser}/>
                         <div>로그인</div>
                     </div> :
-                    <div className='login-button' onClick={logOut}>
+                    <div className='login-button' onClick={logoutUser}>
                         <FontAwesomeIcon icon={faUser}/>
                         <div>로그아웃</div>
                     </div>
